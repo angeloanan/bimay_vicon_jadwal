@@ -6,7 +6,24 @@
 
 ![Image showing the app working](./.github/resources/demo.png)
 
-## Motivation
+## Installation
+
+Download the latest stable build using the side menu [(or by clicking here)](https://github.com/angeloanan/bimay_vicon_jadwal/releases).
+
+If you live on the bleeding edge, you can also download the latest development build on [the actions tab](https://nightly.link/angeloanan/bimay_vicon_jadwal/workflows/dev-release/main).
+
+## Building from scratch
+
+You will need to have Rust installed. Run the following commands:
+
+```sh
+git clone https://github.com/angeloanan/bimay_vicon_jadwal.git
+cd bimay_vicon_jadwal
+
+cargo build --release
+```
+
+## Why? Motivation and stuff below
 
 I found it hassling to basically get my schedule off of BINUS' myclass website. Simply getting the Video Conference meeting link everytime there is class is really painful.
 
@@ -22,7 +39,13 @@ Mind you, most of the time, I am half awake at this state. I would have typo'd m
 
 With this simple CLI app, I hope that I can incrementally "replace" the schedule website such that its much friendlier and easier to use (if not for ya'll, atleast for me). I will add more features that will make life easier.
 
-## Implemented Features
+### Implemented Features
 
 * Getting today's schedule, sorted by time and filtered by already happenning
 * Auto opening upcoming / current class video conference link
+
+### Planned Features
+
+* Running app on the background to remind and auto join future conference
+* Synchronization to a Calendar (Google Calendar, Outlook Calendar, etc)
+* Fetching Forum link for GSLCs, including auto template reply
