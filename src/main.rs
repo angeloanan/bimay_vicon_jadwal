@@ -109,8 +109,23 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         if (current_time > (schedule_start_time - chrono::Duration::minutes(20)))
             && (current_time < schedule_end_time)
         {
-            println!("\n\nOpening {}", &schedule_element.meeting_url);
-            webbrowser::open(&schedule_element.meeting_url).unwrap();
+            // If no link on upcoming class, then just skip
+            if schedule_element.meeting_id != "-" {
+                println!(
+                    "\n\nOpening Zoom meeting for {}",
+                    &schedule_element.course_title_en
+                );
+
+                // https://medium.com/zoom-developer-blog/zoom-url-schemes-748b95fd9205
+                open::that(format!(
+                    "zoommtg://zoom.us/join?confno={}&pwd={}&zc=0&uname={} - {}",
+                    schedule_element.meeting_id,
+                    schedule_element.meeting_password,
+                    schedule_element.person_code,
+                    schedule_element.full_name
+                ))
+                .unwrap();
+            }
 
             break;
         }
