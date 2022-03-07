@@ -4,6 +4,8 @@
 
 ---
 
+![Image showing the app working](./.github/resources/demo.png)
+
 ## Motivation
 
 I found it hassling to basically get my schedule off of BINUS' myclass website. Simply getting the Video Conference meeting link everytime there is class is really painful.
