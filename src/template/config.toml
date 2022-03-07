@@ -1,0 +1,7 @@
+[credentials]
+# Your BINUS email without @binus.ac.id
+# For example, if your email is "omarour.woofwoof@binus.ac.id", fill this with "omarour.woofwoof"
+username="CHANGEME"
+
+# Your BINUSMaya password
+password="CHANGEME"
