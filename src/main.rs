@@ -122,7 +122,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
                     schedule_element.meeting_id,
                     schedule_element.meeting_password,
                     schedule_element.person_code,
-                    schedule_element.full_name
+                    capitalize_first_letter(&schedule_element.full_name)
                 ))
                 .unwrap();
             }
@@ -132,4 +132,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     }
 
     Ok(())
+}
+
+// Input a sentence and make every first letter of the word capitalized
+fn capitalize_first_letter(sentence: &str) -> String {
+    let mut result = String::new();
+
+    for word in sentence.split_whitespace() {
+        let mut chars = word.chars();
+        if let Some(first) = chars.next() {
+            result.push(first.to_ascii_uppercase());
+            result.extend(chars);
+        }
+
+        result.push(' ');
+    }
+
+    result.pop();
+    result
 }
