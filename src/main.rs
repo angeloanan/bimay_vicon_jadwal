@@ -16,6 +16,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     };
 
     let client = reqwest::Client::builder()
+        .user_agent("Mozilla/5.0 (compatible; bimay_vicon_jadwal/0.1; +https://github.com/angeloanan/bimay_vicon_jadwal)")
         .cookie_store(true)
         .build()
         .expect("Unable to create HTTP Client");
