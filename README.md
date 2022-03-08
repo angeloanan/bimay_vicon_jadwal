@@ -47,5 +47,6 @@ With this simple CLI app, I hope that I can incrementally "replace" the schedule
 ### Planned Features
 
 * Running app on the background to remind and auto join future conference
+* Advanced schedule class indicator (If ongoing, use `>` for status and show time until end, and leave status empty for upcoming stuff)
 * Synchronization to a Calendar (Google Calendar, Outlook Calendar, etc)
 * Fetching Forum link for GSLCs, including auto template reply
