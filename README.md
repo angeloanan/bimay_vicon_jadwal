@@ -4,6 +4,8 @@
 
 ---
 
+[![asciicast](https://asciinema.org/a/btBZxKnrRwZBNtbkqqVu2rpG1.svg)](https://asciinema.org/a/btBZxKnrRwZBNtbkqqVu2rpG1)
+
 ![Image showing the app working](./.github/resources/demo.png)
 
 ## Installation
