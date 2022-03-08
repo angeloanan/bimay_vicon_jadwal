@@ -138,7 +138,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
 fn capitalize_first_letter(sentence: &str) -> String {
     let mut result = String::new();
 
-    for word in sentence.split_whitespace() {
+    for word in sentence.to_ascii_lowercase().split_whitespace() {
         let mut chars = word.chars();
         if let Some(first) = chars.next() {
             result.push(first.to_ascii_uppercase());
