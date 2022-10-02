@@ -1,7 +1,9 @@
-[credentials]
-# Your BINUS email without @binus.ac.id
-# For example, if your email is "omarour.woofwoof@binus.ac.id", fill this with "omarour.woofwoof"
-username="CHANGEME"
+# Here lies all of the configuration of this program.
 
-# Your BINUSMaya password
-password="CHANGEME"
+# Your New Binusmaya bearer token
+# Paste the token without the `Bearer` prefix
+# 
+# 1. Open the DevTools and go to the Network tab 
+# 2. Go to New Binusmaya (login if you havent)
+# 3. Look for an authorized HTTP request and copy your token from Request Headers -> `Authorization`
+token = "CHANGEME"
