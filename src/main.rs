@@ -1,13 +1,8 @@
 mod config;
 mod schedule;
+mod zoom;
 
-use indoc::{formatdoc, indoc};
-use url::Url;
-
-#[derive(serde::Deserialize)]
-struct ZoomUrlQuery {
-    pwd: String,
-}
+use indoc::indoc;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
@@ -87,31 +82,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         &upcoming_class_data.course_name
     );
 
-    let zoom_url = Url::parse(&upcoming_class_data.join_url.to_owned().unwrap()).expect(
-        formatdoc! {"
-            > Unable to parse URL
-            We are unable to parse the Zoom URL. Please manually join the meeting: {}
-        ", upcoming_class_data.join_url.unwrap()
-        }
-        .as_str(),
+    let (zoom_meeting_id, zoom_meeting_password) =
+        zoom::parse_meeting_url(&upcoming_class_data.join_url.unwrap());
+
+    zoom::open_meeting(
+        &zoom_meeting_id,
+        &zoom_meeting_password,
+        Some(&config.zoom_username),
     );
-
-    let zoom_meeting_id = zoom_url
-        .path_segments()
-        .unwrap()
-        .nth(1)
-        .unwrap()
-        .to_string();
-    let zoom_meeting_password = serde_qs::from_str::<ZoomUrlQuery>(zoom_url.query().unwrap())
-        .unwrap()
-        .pwd;
-
-    // https://medium.com/zoom-developer-blog/zoom-url-schemes-748b95fd9205
-    open::that(format!(
-        "zoommtg://zoom.us/join?confno={}&pwd={}&zc=0&uname={}",
-        zoom_meeting_id, zoom_meeting_password, config.zoom_username
-    ))
-    .unwrap();
 
     // TODO: Migrate this to NewBinusmaya
     // let schedule_response = client.get(schedule_uri).send().await?;
