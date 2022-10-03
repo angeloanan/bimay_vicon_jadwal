@@ -1,123 +1,127 @@
 use serde::{Deserialize, Serialize};
 
-pub type Schedule = Vec<ScheduleElement>;
-
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ScheduleElement {
-    #[serde(rename = "StartDate")]
-    pub start_date: String,
+pub struct UpcomingClass {
+    #[serde(rename = "id")]
+    pub id: String,
 
-    #[serde(rename = "DisplayStartDate")]
-    pub display_start_date: String,
+    #[serde(rename = "classId")]
+    pub class_id: String,
 
-    #[serde(rename = "StartTime")]
-    pub start_time: String,
+    #[serde(rename = "sessionId")]
+    pub session_id: String,
 
-    #[serde(rename = "EndTime")]
-    pub end_time: String,
+    #[serde(rename = "resourceId")]
+    pub resource_id: String,
 
-    #[serde(rename = "SsrComponentDescription")]
-    pub ssr_component_description: SsrComponentDescription,
+    #[serde(rename = "courseId")]
+    pub course_id: String,
 
-    #[serde(rename = "ClassCode")]
+    #[serde(rename = "classCode")]
     pub class_code: String,
 
-    #[serde(rename = "Room")]
-    pub room: None,
+    #[serde(rename = "courseName")]
+    pub course_name: String,
 
-    #[serde(rename = "Campus")]
-    pub campus: None,
-
-    #[serde(rename = "DeliveryMode")]
-    pub delivery_mode: DeliveryMode,
-
-    #[serde(rename = "CourseCode")]
+    #[serde(rename = "courseCode")]
     pub course_code: String,
 
-    #[serde(rename = "CourseTitleEn")]
-    pub course_title_en: String,
+    #[serde(rename = "lecturers")]
+    pub lecturers: Vec<Lecturer>,
 
-    #[serde(rename = "ClassType")]
-    pub class_type: None,
+    #[serde(rename = "dateStart")]
+    pub date_start: String,
 
-    #[serde(rename = "WeekSession")]
-    pub week_session: i64,
+    #[serde(rename = "dateEnd")]
+    pub date_end: String,
 
-    #[serde(rename = "CourseSessionNumber")]
-    pub course_session_number: i64,
+    #[serde(rename = "resources")]
+    pub resources: Vec<Resource>,
 
-    #[serde(rename = "MeetingId")]
-    pub meeting_id: String,
+    #[serde(rename = "sessionProgress")]
+    pub session_progress: i64,
 
-    #[serde(rename = "MeetingPassword")]
-    pub meeting_password: String,
+    #[serde(rename = "classDeliveryMode")]
+    pub class_delivery_mode: String,
 
-    #[serde(rename = "MeetingUrl")]
-    pub meeting_url: String,
+    #[serde(rename = "deliveryMode")]
+    pub delivery_mode: String,
 
-    #[serde(rename = "UserFlag")]
-    pub user_flag: UserFlag,
+    #[serde(rename = "deliveryModeDesc")]
+    pub delivery_mode_desc: String,
 
-    #[serde(rename = "BinusianId")]
-    pub binusian_id: String,
+    #[serde(rename = "joinUrl")]
+    pub join_url: Option<String>,
 
-    #[serde(rename = "PersonCode")]
-    pub person_code: String,
+    #[serde(rename = "isEnded")]
+    pub is_ended: bool,
 
-    #[serde(rename = "FullName")]
-    pub full_name: String,
+    #[serde(rename = "meetingStart")]
+    pub meeting_start: String,
 
-    #[serde(rename = "AcademicCareer")]
-    pub academic_career: String,
+    #[serde(rename = "sessionNumber")]
+    pub session_number: i64,
 
-    #[serde(rename = "ClassMeetingId")]
-    pub class_meeting_id: String,
+    #[serde(rename = "classRoomNumber")]
+    pub class_room_number: Option<String>,
 
-    #[serde(rename = "Location")]
-    pub location: None,
+    #[serde(rename = "classCampusName")]
+    pub class_campus_name: Option<String>,
 
-    #[serde(rename = "MeetingStartDate")]
-    pub meeting_start_date: String,
+    #[serde(rename = "courseComponent")]
+    pub course_component: String,
 
-    #[serde(rename = "Id")]
-    pub id: Option<serde_json::Value>,
+    #[serde(rename = "isHasOngoingClass")]
+    pub is_has_ongoing_class: bool,
+
+    #[serde(rename = "institutionDesc")]
+    pub institution_desc: String,
+
+    #[serde(rename = "academicCareerDesc")]
+    pub academic_career_desc: String,
+
+    #[serde(rename = "isWifiAttendance")]
+    pub is_wifi_attendance: bool,
+
+    #[serde(rename = "deliveryModeIdReal")]
+    pub delivery_mode_id_real: String,
+
+    #[serde(rename = "deliveryModeReal")]
+    pub delivery_mode_real: String,
+
+    #[serde(rename = "classDeliveryModeReal")]
+    pub class_delivery_mode_real: String,
+
+    #[serde(rename = "deliveryModeDescReal")]
+    pub delivery_mode_desc_real: String,
+
+    #[serde(rename = "facilityId")]
+    pub facility_id: String,
+
+    #[serde(rename = "roomDescription")]
+    pub room_description: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub enum None {
-    #[serde(rename = "-")]
-    Empty,
+pub struct Lecturer {
+    #[serde(rename = "id")]
+    pub id: String,
+
+    #[serde(rename = "name")]
+    pub name: String,
+
+    #[serde(rename = "pictureUrl")]
+    pub picture_url: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub enum DeliveryMode {
-    #[serde(rename = "GSLC")]
-    Gslc,
+pub struct Resource {
+    #[serde(rename = "jumlah")]
+    pub count: String,
 
-    #[serde(rename = "VC")]
-    Vc,
-}
+    #[serde(rename = "type")]
+    pub resource_type: String,
 
-#[derive(Debug, Serialize, Deserialize)]
-pub enum SsrComponentDescription {
-    #[serde(rename = "Laboratory")]
-    Laboratory,
-
-    #[serde(rename = "Lecture")]
-    Lecture,
-
-    #[serde(rename = "Tutorial")]
-    Tutorial,
-}
-
-impl std::fmt::Display for DeliveryMode {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{:?}", self)
-    }
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub enum UserFlag {
-    #[serde(rename = "Student")]
-    Student,
+    #[serde(rename = "duration")]
+    pub duration: String,
 }

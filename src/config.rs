@@ -4,6 +4,7 @@ use serde::Deserialize;
 #[derive(Deserialize)]
 pub struct Config {
     pub token: String,
+    pub zoom_username: String,
 }
 
 pub async fn read_config_or_exit() -> Result<Config, String> {

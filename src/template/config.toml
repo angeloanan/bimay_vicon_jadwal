@@ -7,3 +7,7 @@
 # 2. Go to New Binusmaya (login if you havent)
 # 3. Look for an authorized HTTP request and copy your token from Request Headers -> `Authorization`
 token = "CHANGEME"
+
+# Your Zoom username
+# Regardless of what your Zoom default username is, your username will be changed to this
+zoom_username = ""
