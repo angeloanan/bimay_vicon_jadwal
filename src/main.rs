@@ -63,14 +63,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     );
 
     // Fetch upcoming class
+    // Add additional stuff to headers
+    let mut upcoming_class_headers = headers.clone();
+    upcoming_class_headers.insert("academicCareer", "RS1".parse().unwrap());
+    upcoming_class_headers.insert("institution", "BNS01".parse().unwrap());
+
     let upcoming_class_response = client
         .get(schedule_uri)
-        .headers(headers.to_owned())
+        .headers(upcoming_class_headers)
         .send()
         .await?;
     let upcoming_class_text = upcoming_class_response.text().await?;
     let upcoming_class_data =
-        serde_json::from_str::<schedule::UpcomingClass>(&upcoming_class_text)?;
+        serde_json::from_str::<schedule::UpcomingClass>(&upcoming_class_text).unwrap();
 
     if upcoming_class_data.join_url.is_none() {
         println!("Your upcoming class does not have a Zoom URL. Please check NewBinusmaya.");
