@@ -1,6 +1,9 @@
 # BINUSMaya Schedules
 
-📅 | Shows BINUSMaya schedule on your terminal (and auto opens upcoming video conference class!) 
+> [!IMPORTANT]
+> With the deprecation of [BINUSMaya Jadwal](https://bm5jadwal.azurewebsites.net) along with the introduction of [New BINUSMaya](https://newbinusmaya.binus.ac.id), this project is no longer maintained.
+
+📅 | Shows BINUSMaya schedule on your terminal (and auto opens upcoming video conference class!)
 
 ---
 
@@ -43,12 +46,12 @@ With this simple CLI app, I hope that I can incrementally "replace" the schedule
 
 ### Implemented Features
 
-* Getting today's schedule, sorted by time and filtered by already happenning
-* Auto opening upcoming / current class video conference link
+-   Getting today's schedule, sorted by time and filtered by already happenning
+-   Auto opening upcoming / current class video conference link
 
 ### Planned Features
 
-* Running app on the background to remind and auto join future conference
-* Advanced schedule class indicator (If ongoing, use `>` for status and show time until end, and leave status empty for upcoming stuff)
-* Synchronization to a Calendar (Google Calendar, Outlook Calendar, etc)
-* Fetching Forum link for GSLCs, including auto template reply
+-   Running app on the background to remind and auto join future conference
+-   Advanced schedule class indicator (If ongoing, use `>` for status and show time until end, and leave status empty for upcoming stuff)
+-   Synchronization to a Calendar (Google Calendar, Outlook Calendar, etc)
+-   Fetching Forum link for GSLCs, including auto template reply
